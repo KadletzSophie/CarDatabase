@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CarDatabase {
     HashMap<String, Vehicle> db = new HashMap<>();
@@ -24,7 +26,27 @@ public class CarDatabase {
         }
     }
 
-    public Vehicle[] search(String licencePlate, boolean exact) {
-        return null;
+    public Vehicle[] search(String licencePlate, boolean exact){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        long start = System.nanoTime();
+
+        if (exact){
+            Vehicle tmp = db.get(licencePlate);
+            if(tmp != null) {
+                vehicles.add(tmp);
+            }
+
+        }
+        else{
+            for (Map.Entry<String, Vehicle> entry : db.entrySet()) {
+                Vehicle tmp = entry.getValue();
+                if(tmp.getLicensePlate().contains(licencePlate)){
+                    vehicles.add(tmp);
+                }
+            }
+
+        }
+
+        return vehicles.toArray(Vehicle[]::new);
     }
 }
