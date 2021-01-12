@@ -1,8 +1,14 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="controller.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+    <children>
+        <TextArea fx:id="eingabe_txtf" prefHeight="38.0" prefWidth="523.0" />
+        <Button fx:id="search_bt" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#searchVehicle" prefHeight="46.0" prefWidth="106.0" text="Search..." />
+        <Button fx:id="searchex_bt" layoutX="402.0" layoutY="38.0" mnemonicParsing="false" onAction="#searchVehicleExact" prefHeight="46.0" prefWidth="106.0" text="Search Exact..." />
+        <TextArea fx:id="ausgabe_txta" layoutY="85.0" prefHeight="218.0" prefWidth="523.0" />
+    </children>
+</AnchorPane>

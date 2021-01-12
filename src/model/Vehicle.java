@@ -1,5 +1,12 @@
 package model;
 
+import java.util.Objects;
+
+/**
+ * @author Sophie Kadletz
+ * @version 12.01.2021
+ */
+
 public class Vehicle {
     private String color;
     private String owner;
@@ -64,4 +71,8 @@ public class Vehicle {
                 "Owner: " + owner + '\n';
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, owner, maufacturing, model, licensePlate);
+    }
 }

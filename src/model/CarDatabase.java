@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Sophie Kadletz
+ * @version 12.01.2021
+ */
+
 public class CarDatabase {
     HashMap<String, Vehicle> db = new HashMap<>();
 
@@ -32,21 +37,23 @@ public class CarDatabase {
 
         if (exact){
             Vehicle tmp = db.get(licencePlate);
-            if(tmp != null) {
-                vehicles.add(tmp);
-            }
+            if(tmp != null) { vehicles.add(tmp); }
 
+            long stop = System.nanoTime();
+            float ms = (stop - start) / 1000000;
+            System.out.println("Search took: " + ms + "ms (pattern search)");
         }
+
         else{
             for (Map.Entry<String, Vehicle> entry : db.entrySet()) {
                 Vehicle tmp = entry.getValue();
-                if(tmp.getLicensePlate().contains(licencePlate)){
-                    vehicles.add(tmp);
-                }
+                if(tmp.getLicensePlate().contains(licencePlate)){ vehicles.add(tmp); }
             }
 
+            long stop = System.nanoTime();
+            float ms = (stop - start) / 1000000;
+            System.out.println("Search took: " + ms + "ms (exact)");
         }
-
-        return vehicles.toArray(Vehicle[]::new);
+        return vehicles.toArray(Vehicle[]::new); //ArrayList to Array
     }
 }
